@@ -1,0 +1,23 @@
+read -p "App to install: " app_1
+
+if [ -x "$(command -v apk)" ];
+then
+    sudo apk add --no-cache $app_1
+elif [ -x "$(command -v apt-get)" ];
+then
+    sudo apt-get install $app_1
+elif [ -x "$(command -v dnf)" ];
+then
+    sudo dnf install $app_1
+elif [ -x "$(command -v zypper)" ];
+then
+    sudo zypper install $app_1
+elif [ -x "$(command -v xbps-install)" ];
+then 
+    sudo xbps-install $app_1
+elif [ -x "$(command -v pacman)" ];
+then
+    sudo pacman -Sy $app_1
+else
+echo "Sorry, $app_1 not found!"
+fi
